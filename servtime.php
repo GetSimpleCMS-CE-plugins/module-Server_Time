@@ -1,15 +1,15 @@
 <?php
 /**
- * Module Name: Time & Date
- * Module ID: time
- * Description: Displays the current local and server time/date.
+ * Module Name: Server Time
+ * Module ID: servtime
+ * Description: Displays current local and server time/date.
  * Version: 1.0
- * Default W: 5
- * Default H: 4
+ * Default W: 4
+ * Default H: 2
  */
 ?>
 
- <?php
+<?php
 $serverTimezone = null;
 $serverISO = null;
 
@@ -22,24 +22,18 @@ if (defined('GSTIMEZONE') && GSTIMEZONE != '') {
 
 <style>
 .gs-time-panel {
-	/*background: #fff;
-	border: 1px solid #ddd;
-	border-radius: 8px;
-	padding: 18px;
-	max-width: 500px;
-	box-shadow: 0 2px 6px rgba(0,0,0,0.05);*/
 	font-family: system-ui, sans-serif;
 }
 
 .gs-time-panel h3 {
 	margin-top: 0;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 .time-row {
 	display: flex;
 	justify-content: space-between;
-	margin-bottom: 10px;
+	margin-bottom: 5px;
 }
 
 .time-label {
@@ -52,9 +46,10 @@ if (defined('GSTIMEZONE') && GSTIMEZONE != '') {
 }
 
 .diff-row {
-	margin-top: 12px;
-	padding-top: 10px;
+	margin-top: 5px;
+	padding-top: 5px;
 	border-top: 1px solid #eee;
+	font-size:.8em;
 }
 
 .time-warning {
@@ -68,10 +63,10 @@ if (defined('GSTIMEZONE') && GSTIMEZONE != '') {
 </style>
 
 <div class="gs-time-panel">
-	<h3>🕒 Time Status</h3>
+	<h3><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;" width="28" height="28" viewBox="0 0 20 20"><rect width="20" height="20" fill="none"/><path fill="currentColor" d="M10.475 2.17a.75.75 0 0 0-.95 0l-2.75 2.25a.75.75 0 0 0 .95 1.16L10 3.72l2.275 1.86a.75.75 0 1 0 .95-1.16zm2.75 13.41l-2.75 2.25a.75.75 0 0 1-.95 0l-2.75-2.25a.75.75 0 0 1 .95-1.16L10 16.28l2.275-1.861a.75.75 0 1 1 .95 1.16M10.75 8.75a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0M10 12a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5m6-2.5a1.5 1.5 0 0 1 3 0v1a1.5 1.5 0 0 1-3 0zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 1 0v-1a.5.5 0 0 0-.5-.5m-11-1A1.5 1.5 0 0 0 5 9.5v1a1.5 1.5 0 0 0 3 0v-1A1.5 1.5 0 0 0 6.5 8M6 9.5a.5.5 0 0 1 1 0v1a.5.5 0 0 1-1 0zm6 0a1.5 1.5 0 0 1 3 0v1a1.5 1.5 0 0 1-3 0zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 1 0v-1a.5.5 0 0 0-.5-.5m-11-1A1.5 1.5 0 0 0 1 9.5v1a1.5 1.5 0 0 0 3 0v-1A1.5 1.5 0 0 0 2.5 8M2 9.5a.5.5 0 0 1 1 0v1a.5.5 0 0 1-1 0z"/></svg> Time Status</h3>
 
 	<div class="time-row">
-		<div class="time-label">Your Local Time (<span id="localTimezone"></span>)</div>
+		<div class="time-label">Local Time (<span id="localTimezone"></span>)</div>
 		<div class="time-value" id="localTime"></div>
 	</div>
 
@@ -112,7 +107,7 @@ function updateAllTimes() {
 
 	// FORMAT STRING (Local Time)
 	//const format = "Y-m-d, H:i:s";
-	const format = "H:i (Y-m-d)";
+	const format = "H:i:s (Y-m-d)";
 	//  end
 
 	function pad(n) {
@@ -167,5 +162,4 @@ updateAllTimes();
 
 // Update every second
 setInterval(updateAllTimes, 1000);
-
 </script>
