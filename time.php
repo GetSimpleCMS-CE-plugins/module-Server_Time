@@ -2,7 +2,7 @@
 /**
  * Module Name: Time & Date
  * Module ID: time
- * Description: Displays the current server time and date
+ * Description: Displays the current local and server time/date.
  * Version: 1.0
  * Default W: 5
  * Default H: 4
@@ -167,4 +167,5 @@ updateAllTimes();
 
 // Update every second
 setInterval(updateAllTimes, 1000);
+
 </script>
